@@ -1,0 +1,40 @@
+# Development files
+.vscode/
+.idea/
+*.log
+.DS_Store
+.env*
+
+# Build artifacts
+node_modules/
+dist/
+coverage/
+.cache/
+
+# Generated files (not needed for users)
+analytics/
+logs/
+quality-metrics.json
+template-test-report.json
+registry.json
+
+# Website (hosted separately)
+website/
+docs/index.html
+
+# Development/testing
+test/
+*.test.js
+*.spec.js
+
+# Git files
+.git/
+.gitignore
+
+# Documentation that's not essential for package
+DEPLOYMENT.md
+UPCOMING.md
+screenshots/
+
+# IDE integration (users don't need this)
+ide-integration/

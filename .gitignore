@@ -24,6 +24,5 @@ quality-metrics.json
 template-test-report.json
 
 # Keep website folder for GitHub Pages
-website/
 screenshots/
 docs/

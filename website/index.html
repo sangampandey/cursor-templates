@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Cursor Templates</title>
+    <meta name="description" content="Ready-to-use project templates optimized for Cursor IDE with AI-assisted development">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://github.com">
+    <style>
+        /* Optimized font loading - moved to link tags for better performance */
+        
+        :root {
+            /* Color System */
+            --primary: #6366f1;
+            --primary-hover: #5048e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            /* Neutral Colors */
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            --neutral-950: #020617;
+            
+            /* Dark Theme */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            
+            /* Spacing Scale */
+            --space-xs: 0.25rem;  /* 4px */
+            --space-sm: 0.5rem;   /* 8px */
+            --space-md: 1rem;     /* 16px */
+            --space-lg: 1.5rem;   /* 24px */
+            --space-xl: 2rem;     /* 32px */
+            --space-2xl: 3rem;    /* 48px */
+            --space-3xl: 4rem;    /* 64px */
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;   /* 12px */
+            --text-sm: 0.875rem;  /* 14px */
+            --text-base: 1rem;    /* 16px */
+            --text-lg: 1.125rem;  /* 18px */
+            --text-xl: 1.25rem;   /* 20px */
+            --text-2xl: 1.5rem;   /* 24px */
+            --text-3xl: 1.875rem; /* 30px */
+            --text-4xl: 2.25rem;  /* 36px */
+            --text-5xl: 3rem;     /* 48px */
+            --text-6xl: 3.75rem;  /* 60px */
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem; /* 6px */
+            --radius-md: 0.5rem;   /* 8px */
+            --radius-lg: 0.75rem;  /* 12px */
+            --radius-xl: 1rem;     /* 16px */
+            --radius-2xl: 1.5rem;  /* 24px */
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: var(--text-base);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Loading states */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Skeleton loading for template cards */
+        .template-skeleton {
+            background: linear-gradient(90deg, var(--neutral-800) 25%, var(--neutral-700) 50%, var(--neutral-800) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--neutral-800);
+            background: rgba(15, 23, 42, 0.95);
+            padding: var(--space-lg) 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--text-xl);
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--bg-secondary);
+        }
+
+        .mobile-menu-toggle.active {
+            background: var(--primary);
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-2xl);
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links.mobile-open {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--text-sm);
+            transition: all 0.2s ease;
+            position: relative;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--space-3xl) 0 var(--space-2xl);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* Installation Section */
+        .install-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+            border: 1px solid var(--neutral-800);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .install-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+
+        .install-step {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            border: 1px solid var(--neutral-700);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .install-step:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-sm);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .install-step h3 {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .install-step p {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+        }
+
+        .code-block {
+            background: var(--neutral-950);
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            font-family: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
+            font-size: var(--text-sm);
+            color: var(--success);
+            margin: var(--space-lg) 0;
+            position: relative;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: var(--neutral-800);
+            border: 1px solid var(--neutral-700);
+            color: var(--text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: var(--text-xs);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--neutral-700);
+            color: var(--text-primary);
+            border-color: var(--primary);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: var(--space-2xl) 0;
+            text-align: center;
+        }
+
+        .filter-title {
+            color: var(--accent);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .filter-tab {
+            background: var(--bg-secondary);
+            border: 1px solid var(--neutral-700);
+            color: var(--text-secondary);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-2xl);
+            cursor: pointer;
+            font-size: var(--text-sm);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .filter-tab:hover::before {
+            left: 100%;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin: var(--space-2xl) 0;
+        }
+
+        .template-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .template-card:hover {
+            border-color: var(--neutral-600);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .template-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-md);
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .template-card:hover .template-icon {
+            transform: scale(1.05);
+        }
+
+        .template-name {
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+            line-height: 1.4;
+        }
+
+        .template-desc {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-md);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .template-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: auto;
+        }
+
+        .template-tag {
+            background: var(--neutral-800);
+            color: var(--text-muted);
+            padding: 2px var(--space-xs);
+            border-radius: var(--radius-sm);
+            font-size: 10px;
+            font-weight: 500;
+            border: 1px solid var(--neutral-700);
+            transition: all 0.2s ease;
+        }
+
+        .template-card:hover .template-tag {
+            background: var(--neutral-700);
+        }
+        
+        .template-tag:hover {
+            background: var(--primary) !important;
+            color: white !important;
+            cursor: pointer !important;
+        }
+
+        .add-template-card {
+            border: 2px dashed var(--neutral-700);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            background: var(--bg-tertiary);
+        }
+
+        .add-template-card:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .add-template-card::before {
+            display: none;
+        }
+
+        /* Additional Tools */
+        .tools-section {
+            margin: var(--space-3xl) 0;
+        }
+
+        .tools-title {
+            color: var(--accent);
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-2xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+            gap: var(--space-xl);
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--neutral-800);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-lg);
+            font-size: var(--text-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .tool-name {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .tool-desc {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--neutral-800);
+            padding: var(--space-2xl) 0;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: var(--space-3xl);
+            background: var(--bg-secondary);
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Enhanced Responsive Design */
+        
+        /* Large Screens (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1400px;
+                padding: 0 var(--space-2xl);
+            }
+            
+            .templates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .hero-title {
+                font-size: var(--text-6xl);
+            }
+        }
+        
+        /* Desktop (1024px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 1024px) {
+            .container {
+                padding: 0 var(--space-lg);
+            }
+            
+            .templates-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Tablet Landscape (768px - 1023px) */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+            
+            .templates-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .install-steps {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .filter-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: var(--space-sm);
+                scrollbar-width: thin;
+            }
+            
+            .filter-tabs::-webkit-scrollbar {
+                height: 4px;
+            }
+            
+            .filter-tabs::-webkit-scrollbar-track {
+                background: var(--neutral-800);
+            }
+            
+            .filter-tabs::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 2px;
+            }
+        }
+        
+        /* Tablet Portrait & Mobile Landscape (600px - 767px) */
+        @media (max-width: 767px) and (min-width: 600px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .nav-links {
+                gap: var(--space-lg);
+            }
+            
+            .nav-links a {
+                font-size: var(--text-xs);
+                padding: var(--space-xs) var(--space-sm);
+            }
+            
+            .hero {
+                padding: var(--space-2xl) 0 var(--space-xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-lg);
+            }
+            
+            .templates-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+            
+            .install-steps {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .install-section {
+                padding: var(--space-lg);
+            }
+        }
+        
+        /* Mobile Portrait (480px - 599px) */
+        @media (max-width: 599px) and (min-width: 480px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border: 1px solid var(--neutral-800);
+                border-top: none;
+                border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+                padding: var(--space-lg);
+                flex-direction: column;
+                gap: var(--space-md);
+                display: none;
+                box-shadow: var(--shadow-xl);
+                backdrop-filter: blur(12px);
+            }
+            
+            .nav-links.mobile-open {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: var(--space-md);
+                width: 100%;
+                text-align: center;
+                border-radius: var(--radius-lg);
+                border: 1px solid var(--neutral-700);
+                background: var(--bg-secondary);
+            }
+            
+            .nav-links a:hover {
+                background: var(--primary);
+                color: white;
+                border-color: var(--primary);
+            }
+            
+            .hero {
+                padding: var(--space-xl) 0;
+            }
+            
+            .templates-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .filter-tabs {
+                gap: var(--space-sm);
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: var(--space-sm);
+            }
+            
+            .filter-tab {
+                flex-shrink: 0;
+                min-width: max-content;
+            }
+        }
+        
+        /* Small Mobile (320px - 479px) */
+        @media (max-width: 479px) {
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border: 1px solid var(--neutral-800);
+                border-top: none;
+                border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+                padding: var(--space-md);
+                flex-direction: column;
+                gap: var(--space-sm);
+                display: none;
+                box-shadow: var(--shadow-xl);
+                backdrop-filter: blur(12px);
+            }
+            
+            .nav-links.mobile-open {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: var(--space-sm);
+                width: 100%;
+                text-align: center;
+                border-radius: var(--radius-md);
+                border: 1px solid var(--neutral-700);
+                background: var(--bg-secondary);
+                font-size: var(--text-sm);
+            }
+            
+            header {
+                padding: var(--space-md) 0;
+            }
+            
+            .logo {
+                font-size: var(--text-lg);
+            }
+            
+            .hero {
+                padding: var(--space-lg) 0;
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+                margin-bottom: var(--space-md);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-base);
+                margin-bottom: var(--space-lg);
+            }
+            
+            .template-card {
+                padding: var(--space-md);
+                min-height: 200px;
+            }
+            
+            .template-icon {
+                width: 48px;
+                height: 48px;
+                font-size: var(--text-xl);
+                margin-bottom: var(--space-md);
+            }
+            
+            .template-name {
+                font-size: var(--text-base);
+                margin-bottom: var(--space-xs);
+            }
+            
+            .template-desc {
+                font-size: var(--text-xs);
+                margin-bottom: var(--space-md);
+            }
+            
+            .install-step {
+                padding: var(--space-md);
+            }
+            
+            .install-section {
+                padding: var(--space-md);
+                margin: var(--space-lg) 0;
+            }
+            
+            .tool-card {
+                padding: var(--space-md);
+            }
+            
+            .filter-tabs {
+                gap: var(--space-xs);
+                padding: 0 var(--space-xs);
+            }
+            
+            .filter-tab {
+                padding: var(--space-xs) var(--space-sm);
+                font-size: var(--text-xs);
+                border-radius: var(--radius-lg);
+                white-space: nowrap;
+            }
+            
+            .code-block {
+                padding: var(--space-md);
+                font-size: var(--text-xs);
+                overflow-x: auto;
+            }
+            
+            .copy-btn {
+                position: static;
+                margin-bottom: var(--space-sm);
+                width: 100%;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .template-card:hover {
+                transform: none;
+            }
+            
+            .template-card:active {
+                transform: translateY(-2px);
+                transition: transform 0.1s ease;
+            }
+            
+            .filter-tab {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .copy-btn {
+                min-height: 44px;
+                padding: var(--space-md);
+            }
+        }
+        
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+        
+        /* Whimsical Delights & Micro-interactions */
+        
+        /* Floating particles */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1.5rem;
+            animation: floatUp 3s ease-out forwards;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg) scale(0.5);
+            }
+        }
+        
+        /* Confetti burst */
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 8px;
+            height: 8px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+        
+        /* Wiggle animation for fun elements */
+        .wiggle {
+            animation: wiggle 0.5s ease-in-out;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        
+        /* Bounce animation for success */
+        .bounce-success {
+            animation: bounceSuccess 0.6s ease-out;
+        }
+        
+        @keyframes bounceSuccess {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Fun copy button states */
+        .copy-btn.success {
+            background: linear-gradient(135deg, #10b981, #34d399) !important;
+            color: white !important;
+            border-color: #10b981 !important;
+            transform: scale(1.05);
+        }
+        
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: toastIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .toast:hover {
+            transform: scale(1.05);
+        }
+        
+        .toast.success {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+        
+        .toast.party {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: toastIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), partyColors 2s ease infinite;
+        }
+        
+        @keyframes toastIn {
+            0% {
+                opacity: 0;
+                transform: translateX(100%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+        
+        @keyframes partyColors {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Filter tab sparkle effect */
+        .filter-tab.sparkle::after {
+            content: '✨';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 12px;
+            animation: sparkleRotate 2s ease infinite;
+        }
+        
+        @keyframes sparkleRotate {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+            50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+        }
+        
+        /* Title glow animation */
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.3)); }
+            100% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.8)); }
+        }
+        
+        /* Secret konami code easter egg */
+        .konami-activated {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
+            background-size: 400% 400%;
+            animation: rainbow 2s ease infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        @media (prefers-reduced-motion: no-preference) {
+            .template-card:focus-visible,
+            .filter-tab:focus-visible,
+            .nav-links a:focus-visible,
+            .copy-btn:focus-visible {
+                outline: 2px solid var(--primary);
+                outline-offset: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🔥 Cursor Templates</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger">☰</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="https://github.com/sangampandey/cursor-templates/tree/main/templates" target="_blank" rel="noopener noreferrer">Browse Components</a></li>
+                <li><a href="https://github.com/sangampandey/cursor-templates" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1 class="hero-title">Cursor Templates</h1>
+            <p class="hero-subtitle">Ready-to-use project templates optimized for Cursor IDE's AI-powered development workflow</p>
+            
+            <div class="install-section">
+                <div class="install-steps">
+                    <div class="install-step">
+                        <div class="step-number">1</div>
+                        <h3>Browse Templates</h3>
+                        <p>Explore our collection of optimized templates below and find the perfect starting point for your project</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            npm install -g cursor-templates
+                        </div>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="step-number">2</div>
+                        <h3>Copy Template & Initialize</h3>
+                        <p>Click any template card below to copy its initialization command, then run it in your project directory</p>
+                        <p style="margin-top: 1rem; color: #999;">✨ Each template includes .cursorrules optimized for AI-assisted development!</p>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="step-number">3</div>
+                        <h3>Open in Cursor & Code</h3>
+                        <p>Launch Cursor IDE and start developing with AI assistance - templates include optimized .cursorrules!</p>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            cursor . <span style="color: #666;">// Start coding with AI! 🚀</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="filter-title">🔍 Filter Templates <span style="font-size: 0.8em; opacity: 0.7;">(Click any tag to filter!)</span></div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All (15)</button>
+                <button class="filter-tab" data-filter="react">React (4)</button>
+                <button class="filter-tab" data-filter="typescript">TypeScript (15)</button>
+                <button class="filter-tab" data-filter="vue">Vue (2)</button>
+                <button class="filter-tab" data-filter="python">Python (2)</button>
+                <button class="filter-tab" data-filter="mobile">Mobile (2)</button>
+                <button class="filter-tab" data-filter="fullstack">Full-Stack (4)</button>
+                <button class="filter-tab" data-filter="backend">Backend (3)</button>
+                <button class="filter-tab" data-filter="desktop">Desktop (1)</button>
+            </div>
+        </section>
+
+        <section class="templates-grid" id="templatesGrid">
+            <!-- Templates will be loaded here -->
+        </section>
+
+        <section class="tools-section">
+            <div class="tools-title">🛠️ Template Features</div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <div class="tool-name">AI-Optimized Rules</div>
+                    <div class="tool-desc">Each template includes carefully crafted .cursorrules files that provide context-aware AI assistance for your specific framework and patterns 🎯</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        ls -la .cursorrules <span style="color: #666;"># Check the AI rules</span>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">🚀</div>
+                    <div class="tool-name">Production Ready</div>
+                    <div class="tool-desc">Templates follow industry best practices with proper project structure, TypeScript configuration, testing setup, and modern tooling ✨</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        npm run dev <span style="color: #666;"># Start developing!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cursor Templates. Open source project optimized for Cursor IDE.</p>
+            <p style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://github.com/sangampandey/cursor-templates/issues/new?template=template-request.md&title=Template%20Request%3A%20%5BFramework%20Name%5D&labels=template-request,enhancement" style="color: #666;">✨ Request Template</a>
+                <a href="https://github.com/sangampandey/cursor-templates/issues/new?template=bug-report.md&title=Bug%20Report%3A%20%5BIssue%20Summary%5D&labels=bug" style="color: #666;">🐛 Report Bug</a>
+                <a href="https://github.com/sangampandey/cursor-templates/blob/main/CONTRIBUTING.md" style="color: #666;">🤝 Contribute</a>
+                <a href="https://github.com/sangampandey/cursor-templates/discussions" style="color: #666;">💬 Discussions</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Template data based on actual available templates in the repository
+        const templates = [
+            {
+                name: "React + TypeScript",
+                desc: "React with TypeScript, Vite, and modern tooling",
+                icon: "⚛",
+                bg: "#61dafb",
+                iconColor: "#fff",
+                tags: ["react", "typescript", "vite"],
+                command: "cursor-templates init --template react-typescript-vite"
+            },
+            {
+                name: "Vue 3 + TypeScript",
+                desc: "Vue 3 with TypeScript, Vite, Composition API, and Pinia",
+                icon: "V",
+                bg: "#4fc08d",
+                iconColor: "#fff",
+                tags: ["vue", "typescript", "vite"],
+                command: "cursor-templates init --template vue3-typescript-vite"
+            },
+            {
+                name: "Angular Enterprise",
+                desc: "Angular 17+ with TypeScript, RxJS, NgRx, and enterprise patterns",
+                icon: "A",
+                bg: "#dd0031",
+                iconColor: "#fff",
+                tags: ["angular", "typescript", "enterprise"],
+                command: "cursor-templates init --template angular-enterprise"
+            },
+            {
+                name: "Next.js App Router",
+                desc: "Next.js 14+ with App Router, TypeScript, and Tailwind CSS",
+                icon: "▲",
+                bg: "#000000",
+                iconColor: "#fff",
+                tags: ["nextjs", "react", "typescript"],
+                command: "cursor-templates init --template nextjs-app-router"
+            },
+            {
+                name: "T3 Stack",
+                desc: "T3 Stack with Next.js, TypeScript, Tailwind, tRPC, Prisma, and NextAuth",
+                icon: "T3",
+                bg: "#7c3aed",
+                iconColor: "#fff",
+                tags: ["t3", "nextjs", "fullstack"],
+                command: "cursor-templates init --template t3-stack-full"
+            },
+            {
+                name: "SvelteKit",
+                desc: "SvelteKit with TypeScript, Tailwind CSS, and modern web app patterns",
+                icon: "S",
+                bg: "#ff3e00",
+                iconColor: "#fff",
+                tags: ["svelte", "sveltekit", "typescript"],
+                command: "cursor-templates init --template sveltekit-typescript"
+            },
+            {
+                name: "Remix",
+                desc: "Remix full-stack framework with TypeScript, Tailwind, and modern web patterns",
+                icon: "R",
+                bg: "#121212",
+                iconColor: "#fff",
+                tags: ["remix", "react", "fullstack"],
+                command: "cursor-templates init --template remix-typescript"
+            },
+            {
+                name: "Astro",
+                desc: "Astro static site generator with TypeScript, MDX, and modern web optimization",
+                icon: "🚀",
+                bg: "#ff5d01",
+                iconColor: "#fff",
+                tags: ["astro", "static-site", "typescript"],
+                command: "cursor-templates init --template astro-content"
+            },
+            {
+                name: "Nuxt 3",
+                desc: "Nuxt 3 with TypeScript, Nitro server, and full-stack Vue development",
+                icon: "N",
+                bg: "#00dc82",
+                iconColor: "#fff",
+                tags: ["nuxt", "vue", "fullstack"],
+                command: "cursor-templates init --template nuxt3-fullstack"
+            },
+            {
+                name: "Node.js + Express",
+                desc: "Express.js with TypeScript, modern middleware, and best practices",
+                icon: "⬢",
+                bg: "#339933",
+                iconColor: "#fff",
+                tags: ["nodejs", "express", "backend"],
+                command: "cursor-templates init --template node-express-typescript"
+            },
+            {
+                name: "Python + FastAPI",
+                desc: "FastAPI with async/await, SQLAlchemy, and modern Python patterns",
+                icon: "⚡",
+                bg: "#009688",
+                iconColor: "#fff",
+                tags: ["python", "fastapi", "api"],
+                command: "cursor-templates init --template python-fastapi-async"
+            },
+            {
+                name: "Django REST API",
+                desc: "Django with Django REST Framework, PostgreSQL, and modern Python patterns",
+                icon: "♦",
+                bg: "#092e20",
+                iconColor: "#fff",
+                tags: ["django", "python", "api"],
+                command: "cursor-templates init --template django-rest-api"
+            },
+            {
+                name: "React Native + Expo",
+                desc: "React Native with Expo, TypeScript, and modern mobile development patterns",
+                icon: "📱",
+                bg: "#000020",
+                iconColor: "#fff",
+                tags: ["react-native", "mobile", "expo"],
+                command: "cursor-templates init --template react-native-expo"
+            },
+            {
+                name: "Flutter + Riverpod",
+                desc: "Flutter with Riverpod state management, clean architecture, and modern patterns",
+                icon: "🐦",
+                bg: "#02569b",
+                iconColor: "#fff",
+                tags: ["flutter", "mobile", "riverpod"],
+                command: "cursor-templates init --template flutter-riverpod"
+            },
+            {
+                name: "Electron + React",
+                desc: "Electron desktop app with React, TypeScript, and modern desktop patterns",
+                icon: "⚛",
+                bg: "#47848f",
+                iconColor: "#fff",
+                tags: ["electron", "desktop", "react"],
+                command: "cursor-templates init --template electron-react-typescript"
+            }
+        ];
+
+        function renderTemplates(filter = 'all') {
+            const grid = document.getElementById('templatesGrid');
+            const filteredTemplates = filter === 'all' ? templates : 
+                templates.filter(t => t.tags?.includes(filter));
+
+            // Add template card at the end
+            const allTemplates = [...filteredTemplates, {
+                name: "Add New Template",
+                desc: "Contribute a new language or framework template for Cursor IDE",
+                icon: "➕",
+                bg: "transparent",
+                tags: [],
+                isAdd: true
+            }];
+
+            grid.innerHTML = allTemplates.map(template => {
+                if (template.isAdd) {
+                    return `
+                        <div class="template-card add-template-card" onclick="window.open('https://github.com/sangampandey/cursor-templates/issues/new?template=template-request.md&title=Template%20Request%3A%20%5BFramework%20Name%5D&labels=template-request,enhancement', '_blank')">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">${template.icon}</div>
+                            <div class="template-name">${template.name}</div>
+                            <div class="template-desc">${template.desc}</div>
+                        </div>
+                    `;
+                }
+                
+                return `
+                    <div class="template-card" onclick="copyTemplateCommand('${template.command}', '${template.name}')" title="Click to copy command">
+                        <div class="template-icon" style="background: ${template.bg}; color: ${template.iconColor || '#fff'};">
+                            ${template.icon}
+                        </div>
+                        <div class="template-name">${template.name}</div>
+                        <div class="template-desc">${template.desc}</div>
+                        <div class="template-tags">
+                            ${template.tags?.map(tag => `<span class="template-tag" onclick="event.stopPropagation(); filterByTag('${tag}')">${tag}</span>`).join('') || ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function copyTemplateCommand(command, name) {
+            if (!command) return;
+            
+            navigator.clipboard.writeText(command).then(() => {
+                // Create delightful feedback
+                createSuccessToast(`Copied ${name} command!`);
+                createConfetti(event.target);
+                
+                // Add bounce to clicked card
+                const card = event.target.closest('.template-card');
+                if (card) {
+                    card.classList.add('bounce-success');
+                    setTimeout(() => card.classList.remove('bounce-success'), 600);
+                }
+            });
+        }
+
+        function copyCode(button) {
+            const code = button.nextSibling.textContent.trim();
+            navigator.clipboard.writeText(code).then(() => {
+                // Fun copy button transformation
+                const originalText = button.textContent;
+                button.textContent = getRandomCopyMessage();
+                button.classList.add('success');
+                
+                // Add some sparkle particles
+                createSparkleParticles(button);
+                
+                // Wiggle the button
+                button.classList.add('wiggle');
+                setTimeout(() => button.classList.remove('wiggle'), 500);
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('success');
+                }, 2500);
+            });
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                renderTemplates(filter);
+            });
+        });
+        
+        // Function to filter by tag (called when clicking on template tags)
+        function filterByTag(tag) {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            
+            // Find and activate the corresponding filter tab
+            const matchingTab = document.querySelector(`[data-filter="${tag}"]`);
+            if (matchingTab) {
+                matchingTab.classList.add('active');
+            } else {
+                // If no exact match, just render without changing active tab
+                document.querySelector('[data-filter="all"]').classList.add('active');
+            }
+            
+            renderTemplates(tag);
+        }
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', () => {
+            const isOpen = navLinks.classList.contains('mobile-open');
+            navLinks.classList.toggle('mobile-open');
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenuToggle.setAttribute('aria-expanded', !isOpen);
+            
+            // Update hamburger icon
+            const hamburger = mobileMenuToggle.querySelector('.hamburger');
+            hamburger.textContent = isOpen ? '☰' : '✕';
+        });
+        
+        // Close mobile menu when clicking on a link
+        navLinks?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuToggle.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                const hamburger = mobileMenuToggle.querySelector('.hamburger');
+                hamburger.textContent = '☰';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuToggle.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                const hamburger = mobileMenuToggle.querySelector('.hamburger');
+                hamburger.textContent = '☰';
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 599) {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuToggle.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                const hamburger = mobileMenuToggle.querySelector('.hamburger');
+                hamburger.textContent = '☰';
+            }
+        });
+        
+        // Improve scroll performance
+        let ticking = false;
+        function updateHeader() {
+            const scrollY = window.scrollY;
+            const header = document.querySelector('header');
+            if (scrollY > 100) {
+                header.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        // Performance optimization: Intersection Observer for lazy loading
+        const observerOptions = {
+            root: null,
+            rootMargin: '50px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Initialize loading states
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add loading class to elements
+            document.querySelectorAll('.template-card, .install-step, .tool-card').forEach(el => {
+                el.classList.add('loading');
+                observer.observe(el);
+            });
+        });
+        
+        // Initial render with performance optimization
+        requestAnimationFrame(() => {
+            renderTemplates();
+            
+            // Re-observe newly created elements
+            setTimeout(() => {
+                document.querySelectorAll('.template-card').forEach(el => {
+                    el.classList.add('loading');
+                    observer.observe(el);
+                });
+            }, 100);
+        });
+
+        // Delightful helper functions
+        function createSuccessToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            
+            // Add click to dismiss
+            toast.addEventListener('click', () => {
+                toast.style.animation = 'toastIn 0.3s reverse';
+                setTimeout(() => toast.remove(), 300);
+            });
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.style.animation = 'toastIn 0.3s reverse';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 4000);
+        }
+        
+        function createConfetti(element) {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd'];
+            const rect = element.getBoundingClientRect();
+            
+            for (let i = 0; i < 12; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = (rect.left + rect.width / 2) + 'px';
+                confetti.style.top = (rect.top + rect.height / 2) + 'px';
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+        
+        function createSparkleParticles(element) {
+            const sparkles = ['✨', '⭐', '🌟', '💫', '🎉'];
+            const rect = element.getBoundingClientRect();
+            
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+                particle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                particle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                particle.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 3000);
+            }
+        }
+        
+        function getRandomCopyMessage() {
+            const messages = [
+                'Copied! 🎉',
+                'Got it! ✨',
+                'Boom! 💥',
+                'Nice! 👍',
+                'Sweet! 🍯',
+                'Perfect! 💯',
+                'Awesome! 🚀',
+                'Magic! ✨',
+                'Tada! 🎊',
+                'Nailed it! 🔥'
+            ];
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+        
+        // Konami Code Easter Egg
+        let konamiSequence = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        
+        document.addEventListener('keydown', (e) => {
+            konamiSequence.push(e.code);
+            
+            if (konamiSequence.length > konamiCode.length) {
+                konamiSequence.shift();
+            }
+            
+            if (JSON.stringify(konamiSequence) === JSON.stringify(konamiCode)) {
+                activateKonamiMode();
+            }
+        });
+        
+        function activateKonamiMode() {
+            document.body.classList.add('konami-activated');
+            createSuccessToast('🎮 Konami Code Activated! You found the secret! 🎉', 'party');
+            
+            // Create lots of confetti
+            setTimeout(() => {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const x = Math.random() * window.innerWidth;
+                        const y = Math.random() * window.innerHeight;
+                        createConfetti({ getBoundingClientRect: () => ({ left: x, top: y, width: 0, height: 0 }) });
+                    }, i * 50);
+                }
+            }, 500);
+            
+            setTimeout(() => {
+                document.body.classList.remove('konami-activated');
+            }, 10000);
+        }
+        
+        // Fun cursor interactions
+        document.addEventListener('mousemove', (e) => {
+            // Occasionally create a trail sparkle
+            if (Math.random() < 0.002) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = '✨';
+                sparkle.style.cssText = `
+                    position: fixed;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    pointer-events: none;
+                    z-index: 9999;
+                    font-size: 12px;
+                    animation: fadeOut 2s ease-out forwards;
+                `;
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+            }
+        });
+        
+        // Add sparkle to random filter tabs
+        function addRandomSparkles() {
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('sparkle');
+            });
+            
+            const tabs = document.querySelectorAll('.filter-tab');
+            const randomTab = tabs[Math.floor(Math.random() * tabs.length)];
+            if (randomTab && Math.random() < 0.3) {
+                randomTab.classList.add('sparkle');
+                setTimeout(() => randomTab.classList.remove('sparkle'), 3000);
+            }
+        }
+        
+        setInterval(addRandomSparkles, 8000);
+        
+        // Subtle background particle system
+        function createBackgroundParticle() {
+            if (Math.random() < 0.3) {
+                const particle = document.createElement('div');
+                particle.textContent = '•';
+                particle.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * window.innerWidth}px;
+                    top: ${window.innerHeight + 20}px;
+                    color: rgba(99, 102, 241, 0.1);
+                    pointer-events: none;
+                    z-index: 1;
+                    font-size: ${Math.random() * 20 + 10}px;
+                    animation: floatUpSlow ${Math.random() * 10 + 15}s linear forwards;
+                `;
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 25000);
+            }
+        }
+        
+        setInterval(createBackgroundParticle, 3000);
+        
+        // Add loading states with personality
+        function addLoadingPersonality() {
+            const loadingElements = document.querySelectorAll('.loading');
+            loadingElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('loaded');
+                    if (Math.random() < 0.2) {
+                        // Occasionally add a little bounce to loaded elements
+                        el.style.animation = 'bounceIn 0.6s ease-out';
+                    }
+                }, index * 100);
+            });
+        }
+        
+        // Call it when page loads
+        document.addEventListener('DOMContentLoaded', addLoadingPersonality);
+        
+        // Add slide animation and other styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                0% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.5) translateY(-20px); }
+            }
+            
+            .hamburger {
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu-toggle.active .hamburger {
+                transform: rotate(90deg);
+            }
+            
+            @keyframes floatUpSlow {
+                0% {
+                    opacity: 0;
+                    transform: translateY(0) rotate(0deg);
+                }
+                10% {
+                    opacity: 0.1;
+                }
+                90% {
+                    opacity: 0.1;
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100vh) rotate(360deg);
+                }
+            }
+            
+            @keyframes bounceIn {
+                0% { transform: scale(0.8); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            
+            /* Add some hover magic to clickable elements */
+            .template-card, .copy-btn, .filter-tab {
+                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><text y="16" font-size="16">👆</text></svg>'), pointer;
+            }
+            
+            /* Fun loading message */
+            .template-skeleton::after {
+                content: 'Loading awesome templates...';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: rgba(99, 102, 241, 0.6);
+                font-size: 14px;
+                font-weight: 500;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
