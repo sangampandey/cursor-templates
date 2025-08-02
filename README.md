@@ -1,6 +1,6 @@
 # Cursor Templates 🚀
 
-A comprehensive template system for Cursor IDE, similar to Claude Code Templates, providing ready-to-use project configurations with AI-optimized `.cursorrules` files.
+A comprehensive template system for Cursor IDE, providing ready-to-use project configurations with AI-optimized `.cursorrules` files.
 
 ## Features
 

@@ -1,0 +1,51 @@
+{
+  "name": "python-fastapi-async",
+  "description": "FastAPI with async/await, SQLAlchemy, and modern Python patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["python", "fastapi", "async", "api", "backend"],
+  "rules": {
+    "context": "You are an expert Python developer specializing in FastAPI, async programming, and modern Python patterns.",
+    "style": {
+      "language": "Python 3.11+",
+      "framework": "FastAPI",
+      "conventions": [
+        "Use type hints everywhere",
+        "Follow PEP 8 style guide",
+        "Use async/await for I/O operations",
+        "Implement Pydantic models for validation",
+        "Use dependency injection"
+      ]
+    },
+    "restrictions": [
+      "Avoid synchronous I/O in async functions",
+      "Don't use global variables",
+      "Avoid mutable default arguments",
+      "Don't mix sync and async without proper handling"
+    ],
+    "preferences": [
+      "Use Pydantic for data validation",
+      "Implement proper error handling with HTTPException",
+      "Use SQLAlchemy with async support",
+      "Implement proper logging",
+      "Use environment variables for configuration",
+      "Write comprehensive docstrings"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# FastAPI Python Development Rules\n\nYou are an expert Python developer specializing in:\n- FastAPI framework\n- Async/await patterns\n- Type hints and Pydantic\n- SQLAlchemy ORM\n- RESTful API design\n\n## Code Style\n- Follow PEP 8 strictly\n- Use type hints for all functions\n- Write comprehensive docstrings\n- Use meaningful variable names\n\n## FastAPI Patterns\n- Use Pydantic models for request/response\n- Implement dependency injection\n- Use async functions for I/O operations\n- Proper error handling with HTTPException\n- Implement proper status codes\n\n## Best Practices\n- Use environment variables for config\n- Implement proper logging\n- Use async context managers\n- Implement database connection pooling\n- Use background tasks for long operations\n- Implement proper CORS handling\n\n## Project Structure\n```\napp/\n  __init__.py\n  main.py\n  core/\n    config.py\n    security.py\n  api/\n    v1/\n      endpoints/\n  models/\n  schemas/\n  services/\n  db/\n    base.py\n    session.py\n```\n\n## Testing\n- Use pytest for testing\n- Implement async test fixtures\n- Use TestClient for API testing\n- Mock external dependencies"
+    },
+    {
+      "path": "app/schemas/example.py",
+      "content": "from pydantic import BaseModel, Field\nfrom typing import Optional\nfrom datetime import datetime\n\nclass ExampleBase(BaseModel):\n    \"\"\"Base schema for Example\"\"\"\n    title: str = Field(..., min_length=1, max_length=100)\n    description: Optional[str] = Field(None, max_length=500)\n\nclass ExampleCreate(ExampleBase):\n    \"\"\"Schema for creating Example\"\"\"\n    pass\n\nclass ExampleUpdate(BaseModel):\n    \"\"\"Schema for updating Example\"\"\"\n    title: Optional[str] = Field(None, min_length=1, max_length=100)\n    description: Optional[str] = Field(None, max_length=500)\n\nclass ExampleResponse(ExampleBase):\n    \"\"\"Schema for Example response\"\"\"\n    id: int\n    created_at: datetime\n    updated_at: datetime\n\n    class Config:\n        from_attributes = True"
+    }
+  ],
+  "commands": {
+    "install": "pip install fastapi uvicorn[standard] sqlalchemy pydantic python-dotenv",
+    "dev": "uvicorn app.main:app --reload",
+    "test": "pytest",
+    "format": "black . && isort ."
+  }
+}

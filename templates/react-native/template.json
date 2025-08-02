@@ -1,0 +1,57 @@
+{
+  "name": "react-native-expo",
+  "description": "React Native with Expo, TypeScript, and modern mobile development patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["react-native", "mobile", "expo", "typescript", "ios", "android"],
+  "rules": {
+    "context": "You are an expert React Native developer specializing in Expo, TypeScript, and cross-platform mobile development.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "React Native with Expo",
+      "conventions": [
+        "Use functional components with TypeScript",
+        "Implement platform-specific code when necessary",
+        "Use React Navigation for navigation",
+        "Follow React Native naming conventions",
+        "Use StyleSheet.create for styles",
+        "Implement proper accessibility labels"
+      ]
+    },
+    "restrictions": [
+      "Avoid web-specific APIs",
+      "Don't use CSS, use StyleSheet API",
+      "Avoid heavy computations on the UI thread",
+      "Don't ignore platform differences",
+      "Avoid inline styles in production code"
+    ],
+    "preferences": [
+      "Use Expo SDK features when available",
+      "Implement responsive designs with Flexbox",
+      "Use React Native Reanimated for animations",
+      "Handle both iOS and Android differences",
+      "Use expo-router for file-based routing",
+      "Implement proper error boundaries",
+      "Use React Query or SWR for data fetching",
+      "Test on both iOS and Android"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# React Native with Expo Development Rules\n\nYou are an expert React Native developer specializing in:\n- React Native with Expo SDK\n- TypeScript for type safety\n- Cross-platform mobile development\n- React Navigation and expo-router\n- Mobile performance optimization\n\n## Code Style\n- Use functional components with TypeScript\n- Implement platform-specific code with Platform.select or .ios/.android files\n- Use StyleSheet.create for all styles\n- Follow React Native naming conventions\n\n## Mobile-Specific Patterns\n- Handle keyboard interactions properly\n- Implement pull-to-refresh where appropriate\n- Use FlatList/SectionList for long lists\n- Implement proper loading states\n- Handle offline scenarios\n- Use AsyncStorage for persistence\n\n## Performance\n- Optimize images with expo-image\n- Use React.memo for expensive components\n- Implement lazy loading for screens\n- Avoid unnecessary re-renders\n- Use InteractionManager for heavy operations\n\n## Platform Considerations\n```typescript\n// Platform-specific code\nimport { Platform } from 'react-native'\n\nconst styles = StyleSheet.create({\n  container: {\n    paddingTop: Platform.select({\n      ios: 20,\n      android: 0,\n    }),\n  },\n})\n```\n\n## Navigation\n- Use expo-router for file-based routing\n- Implement deep linking\n- Handle navigation state properly\n- Use typed navigation props\n\n## Testing\n- Test on physical devices when possible\n- Use Expo Go for development\n- Test on both iOS and Android\n- Handle different screen sizes\n\n## Avoid\n- Web-specific APIs (window, document)\n- CSS styling (use StyleSheet)\n- Synchronous storage operations\n- Large images without optimization\n- Blocking the UI thread"
+    },
+    {
+      "path": "components/Button.tsx",
+      "content": "import React from 'react'\nimport {\n  TouchableOpacity,\n  Text,\n  StyleSheet,\n  TouchableOpacityProps,\n  ViewStyle,\n  TextStyle,\n} from 'react-native'\n\ninterface ButtonProps extends TouchableOpacityProps {\n  title: string\n  variant?: 'primary' | 'secondary' | 'outline'\n  size?: 'small' | 'medium' | 'large'\n}\n\nexport default function Button({\n  title,\n  variant = 'primary',\n  size = 'medium',\n  style,\n  ...props\n}: ButtonProps) {\n  return (\n    <TouchableOpacity\n      style={[\n        styles.button,\n        styles[variant],\n        styles[size],\n        style as ViewStyle,\n      ]}\n      activeOpacity={0.7}\n      {...props}\n    >\n      <Text style={[styles.text, styles[`${variant}Text`]]}>\n        {title}\n      </Text>\n    </TouchableOpacity>\n  )\n}\n\nconst styles = StyleSheet.create({\n  button: {\n    borderRadius: 8,\n    alignItems: 'center',\n    justifyContent: 'center',\n  },\n  primary: {\n    backgroundColor: '#007AFF',\n  },\n  secondary: {\n    backgroundColor: '#5856D6',\n  },\n  outline: {\n    backgroundColor: 'transparent',\n    borderWidth: 1,\n    borderColor: '#007AFF',\n  },\n  small: {\n    paddingVertical: 8,\n    paddingHorizontal: 16,\n  },\n  medium: {\n    paddingVertical: 12,\n    paddingHorizontal: 24,\n  },\n  large: {\n    paddingVertical: 16,\n    paddingHorizontal: 32,\n  },\n  text: {\n    fontSize: 16,\n    fontWeight: '600',\n  },\n  primaryText: {\n    color: '#FFFFFF',\n  },\n  secondaryText: {\n    color: '#FFFFFF',\n  },\n  outlineText: {\n    color: '#007AFF',\n  },\n})"
+    }
+  ],
+  "commands": {
+    "install": "npx create-expo-app . --template blank-typescript",
+    "dev": "npx expo start",
+    "ios": "npx expo run:ios",
+    "android": "npx expo run:android",
+    "build": "eas build",
+    "test": "jest"
+  }
+}

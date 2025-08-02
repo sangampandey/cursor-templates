@@ -1,0 +1,56 @@
+{
+  "name": "vue3-typescript-vite",
+  "description": "Vue 3 with TypeScript, Vite, Composition API, and Pinia",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["vue", "vue3", "typescript", "vite", "pinia", "composition-api"],
+  "rules": {
+    "context": "You are an expert Vue.js developer specializing in Vue 3, TypeScript, Composition API, and modern Vue patterns.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Vue 3",
+      "conventions": [
+        "Use Composition API with script setup",
+        "Use TypeScript for type safety",
+        "Follow Vue 3 style guide",
+        "Use Pinia for state management",
+        "Implement proper component composition",
+        "Use Vue Router for navigation"
+      ]
+    },
+    "restrictions": [
+      "Avoid Options API in new components",
+      "Don't mutate props directly",
+      "Avoid inline styles",
+      "Don't use any type without justification",
+      "Avoid global state mutations"
+    ],
+    "preferences": [
+      "Use script setup syntax",
+      "Implement composables for reusable logic",
+      "Use defineProps with TypeScript",
+      "Prefer reactive and ref appropriately",
+      "Use async setup with Suspense",
+      "Implement proper TypeScript generics",
+      "Use Teleport for modals",
+      "Implement proper error handling"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Vue 3 TypeScript Development Rules\n\nYou are an expert Vue.js developer specializing in:\n- Vue 3 with Composition API\n- TypeScript for type safety\n- Vite for fast development\n- Pinia for state management\n- Vue Router for navigation\n\n## Code Style\n- Use script setup syntax\n- Define props and emits with TypeScript\n- Use composables for reusable logic\n- Follow Vue 3 style guide\n\n## Component Structure\n```vue\n<script setup lang=\"ts\">\nimport { ref, computed } from 'vue'\n\ninterface Props {\n  title: string\n  count?: number\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  count: 0\n})\n\nconst emit = defineEmits<{\n  update: [value: number]\n}>()\n</script>\n\n<template>\n  <!-- Template here -->\n</template>\n\n<style scoped>\n/* Scoped styles */\n</style>\n```\n\n## Composition API Patterns\n- Use ref for primitive values\n- Use reactive for objects\n- Use computed for derived state\n- Use watch and watchEffect appropriately\n- Create composables in composables/ directory\n\n## TypeScript\n- Define interfaces for props\n- Use generics for reusable components\n- Type emit events properly\n- Avoid any type\n\n## State Management (Pinia)\n```typescript\nexport const useStore = defineStore('main', () => {\n  const count = ref(0)\n  const doubleCount = computed(() => count.value * 2)\n  \n  function increment() {\n    count.value++\n  }\n  \n  return { count, doubleCount, increment }\n})\n```\n\n## Best Practices\n- Use v-memo for expensive lists\n- Implement proper key attributes\n- Use Suspense for async components\n- Handle loading and error states\n- Use Teleport for modals/tooltips\n- Implement proper form validation\n\n## Avoid\n- Options API (use Composition API)\n- Direct DOM manipulation\n- Global event buses\n- Mutating props\n- Large setup functions (extract to composables)"
+    },
+    {
+      "path": "src/composables/useCounter.ts",
+      "content": "import { ref, computed, Ref } from 'vue'\n\ninterface UseCounterOptions {\n  initialValue?: number\n  min?: number\n  max?: number\n}\n\ninterface UseCounterReturn {\n  count: Ref<number>\n  doubleCount: Ref<number>\n  increment: () => void\n  decrement: () => void\n  reset: () => void\n  set: (value: number) => void\n}\n\nexport function useCounter(options: UseCounterOptions = {}): UseCounterReturn {\n  const {\n    initialValue = 0,\n    min = -Infinity,\n    max = Infinity\n  } = options\n\n  const count = ref(initialValue)\n  const doubleCount = computed(() => count.value * 2)\n\n  function increment() {\n    if (count.value < max) {\n      count.value++\n    }\n  }\n\n  function decrement() {\n    if (count.value > min) {\n      count.value--\n    }\n  }\n\n  function reset() {\n    count.value = initialValue\n  }\n\n  function set(value: number) {\n    count.value = Math.max(min, Math.min(max, value))\n  }\n\n  return {\n    count: readonly(count),\n    doubleCount,\n    increment,\n    decrement,\n    reset,\n    set\n  }\n}"
+    }
+  ],
+  "commands": {
+    "install": "npm create vite@latest . -- --template vue-ts",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "test": "vitest"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cursor Template Schema",
+  "type": "object",
+  "required": ["name", "description", "version", "rules"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Template description"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "author": {
+      "type": "string",
+      "description": "Template author"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Template tags for discovery"
+    },
+    "rules": {
+      "type": "object",
+      "description": "Cursor AI rules configuration",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "Context for the AI assistant"
+        },
+        "style": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string"
+            },
+            "framework": {
+              "type": "string"
+            },
+            "conventions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Things the AI should avoid"
+        },
+        "preferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Preferred approaches"
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "content"],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Files to be created when template is applied"
+    },
+    "commands": {
+      "type": "object",
+      "properties": {
+        "install": {
+          "type": "string",
+          "description": "Command to run after template installation"
+        },
+        "dev": {
+          "type": "string",
+          "description": "Development command"
+        },
+        "build": {
+          "type": "string",
+          "description": "Build command"
+        },
+        "test": {
+          "type": "string",
+          "description": "Test command"
+        }
+      }
+    }
+  }
+}

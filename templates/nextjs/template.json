@@ -1,0 +1,51 @@
+{
+  "name": "nextjs-app-router",
+  "description": "Next.js 14+ with App Router, TypeScript, and Tailwind CSS",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["nextjs", "react", "typescript", "tailwind", "app-router"],
+  "rules": {
+    "context": "You are an expert Next.js developer working with App Router, TypeScript, and modern React patterns.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Next.js 14+",
+      "conventions": [
+        "Use functional components with TypeScript interfaces",
+        "Implement server components by default",
+        "Use 'use client' directive only when necessary",
+        "Follow Next.js App Router conventions",
+        "Use Tailwind CSS for styling"
+      ]
+    },
+    "restrictions": [
+      "Avoid using Pages Router patterns",
+      "Don't use getServerSideProps or getStaticProps",
+      "Avoid unnecessary 'use client' directives",
+      "Don't import from 'next/router', use 'next/navigation' instead"
+    ],
+    "preferences": [
+      "Prefer server components over client components",
+      "Use async/await for data fetching in server components",
+      "Implement proper error boundaries",
+      "Use Next.js Image component for images",
+      "Implement proper loading states with loading.tsx",
+      "Use route groups for organization"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Next.js App Router Development Rules\n\nYou are an expert Next.js developer specializing in:\n- Next.js 14+ with App Router\n- TypeScript for type safety\n- Tailwind CSS for styling\n- React Server Components\n- Modern React patterns and hooks\n\n## Code Style\n- Use functional components with TypeScript interfaces\n- Implement server components by default\n- Add 'use client' directive only when necessary\n- Follow Next.js file-based routing conventions\n\n## Best Practices\n- Prefer server components for better performance\n- Use async/await in server components for data fetching\n- Implement proper error.tsx and loading.tsx files\n- Use Next.js Image component for optimized images\n- Implement metadata for SEO\n- Use route groups (parentheses) for organization\n\n## Avoid\n- Pages Router patterns (getServerSideProps, getStaticProps)\n- Unnecessary client-side state when server state works\n- Direct DOM manipulation\n- Importing from 'next/router' (use 'next/navigation')\n\n## File Structure\n```\napp/\n  layout.tsx\n  page.tsx\n  loading.tsx\n  error.tsx\n  (routes)/\n    dashboard/\n      page.tsx\n  api/\n    route.ts\ncomponents/\n  ui/\n  features/\nlib/\n  utils.ts\n```"
+    },
+    {
+      "path": "components/example.tsx",
+      "content": "interface ExampleProps {\n  title: string\n  description?: string\n}\n\nexport default function Example({ title, description }: ExampleProps) {\n  return (\n    <div className=\"p-6 bg-white rounded-lg shadow-md\">\n      <h2 className=\"text-2xl font-bold mb-2\">{title}</h2>\n      {description && (\n        <p className=\"text-gray-600\">{description}</p>\n      )}\n    </div>\n  )\n}"
+    }
+  ],
+  "commands": {
+    "install": "npx create-next-app@latest . --typescript --tailwind --app --eslint",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm test"
+  }
+}

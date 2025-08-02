@@ -1,0 +1,52 @@
+{
+  "name": "flutter-riverpod",
+  "description": "Flutter with Riverpod state management, clean architecture, and modern patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["flutter", "dart", "mobile", "riverpod", "ios", "android"],
+  "rules": {
+    "context": "You are an expert Flutter developer specializing in Riverpod state management, clean architecture, and cross-platform mobile development.",
+    "style": {
+      "language": "Dart 3.0+",
+      "framework": "Flutter 3.16+",
+      "conventions": [
+        "Follow Flutter style guide",
+        "Use Riverpod for state management",
+        "Implement clean architecture",
+        "Use freezed for immutable models",
+        "Follow Material Design guidelines",
+        "Write widget and unit tests"
+      ]
+    },
+    "restrictions": [
+      "Avoid setState in complex widgets",
+      "Don't use global variables for state",
+      "Avoid deep widget nesting",
+      "Don't ignore platform differences",
+      "Avoid blocking the UI thread"
+    ],
+    "preferences": [
+      "Use const constructors when possible",
+      "Implement proper error handling",
+      "Use Flutter hooks when beneficial",
+      "Create reusable widgets",
+      "Use proper navigation patterns",
+      "Implement responsive layouts",
+      "Use code generation for models"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Flutter with Riverpod Development Rules\n\nYou are an expert Flutter developer specializing in:\n- Flutter 3.16+ with Dart 3.0+\n- Riverpod for state management\n- Clean architecture patterns\n- Cross-platform mobile development\n- Material Design and iOS design patterns\n\n## Project Structure\n```\nlib/\n  core/\n    constants/\n    errors/\n    utils/\n  data/\n    datasources/\n    models/\n    repositories/\n  domain/\n    entities/\n    repositories/\n    usecases/\n  presentation/\n    providers/\n    screens/\n    widgets/\n  main.dart\n```\n\n## Riverpod Patterns\n```dart\n// Provider definition\nfinal counterProvider = StateNotifierProvider<CounterNotifier, int>((ref) {\n  return CounterNotifier();\n});\n\nclass CounterNotifier extends StateNotifier<int> {\n  CounterNotifier() : super(0);\n  \n  void increment() => state++;\n  void decrement() => state--;\n}\n\n// Using in widgets\nclass CounterWidget extends ConsumerWidget {\n  @override\n  Widget build(BuildContext context, WidgetRef ref) {\n    final count = ref.watch(counterProvider);\n    return Text('$count');\n  }\n}\n```\n\n## Clean Architecture\n- Separate concerns into layers\n- Domain layer has no dependencies\n- Use repository pattern\n- Implement use cases\n- Keep UI logic in providers\n\n## Widget Best Practices\n- Use const constructors\n- Extract widgets for reusability\n- Implement proper keys\n- Use Builder widgets when needed\n- Handle different screen sizes\n\n## Performance\n- Use const widgets\n- Implement lazy loading\n- Use ListView.builder for long lists\n- Optimize images\n- Profile with DevTools\n\n## Testing\n```dart\nvoid main() {\n  testWidgets('Counter increments', (WidgetTester tester) async {\n    await tester.pumpWidget(\n      ProviderScope(\n        child: MaterialApp(home: CounterScreen()),\n      ),\n    );\n    \n    expect(find.text('0'), findsOneWidget);\n    await tester.tap(find.byIcon(Icons.add));\n    await tester.pump();\n    expect(find.text('1'), findsOneWidget);\n  });\n}\n```\n\n## Platform Specific\n```dart\nimport 'dart:io' show Platform;\n\nif (Platform.isIOS) {\n  // iOS specific code\n} else if (Platform.isAndroid) {\n  // Android specific code\n}\n```"
+    }
+  ],
+  "commands": {
+    "install": "flutter create . --platforms ios,android",
+    "dev": "flutter run",
+    "build-apk": "flutter build apk",
+    "build-ios": "flutter build ios",
+    "test": "flutter test",
+    "analyze": "flutter analyze"
+  }
+}

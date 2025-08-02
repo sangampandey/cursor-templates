@@ -1,0 +1,52 @@
+{
+  "name": "node-express-typescript",
+  "description": "Express.js with TypeScript, modern middleware, and best practices",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["node", "express", "typescript", "api", "backend"],
+  "rules": {
+    "context": "You are an expert Node.js developer specializing in Express.js with TypeScript and modern backend patterns.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Express.js",
+      "conventions": [
+        "Use TypeScript for type safety",
+        "Implement middleware pattern",
+        "Use async/await for asynchronous operations",
+        "Follow RESTful API conventions",
+        "Use proper error handling middleware"
+      ]
+    },
+    "restrictions": [
+      "Avoid callback hell, use async/await",
+      "Don't use var, prefer const/let",
+      "Avoid synchronous file operations",
+      "Don't expose sensitive data in responses"
+    ],
+    "preferences": [
+      "Use Express Router for route organization",
+      "Implement validation middleware",
+      "Use proper HTTP status codes",
+      "Implement comprehensive error handling",
+      "Use environment variables for configuration",
+      "Implement proper logging with Winston or similar"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Express TypeScript Development Rules\n\nYou are an expert Node.js developer specializing in:\n- Express.js with TypeScript\n- RESTful API design\n- Middleware patterns\n- Authentication and authorization\n- Database integration\n\n## Code Style\n- Use TypeScript for all files\n- Follow ESLint rules\n- Use async/await over callbacks\n- Implement proper typing for req/res\n\n## Express Patterns\n- Use Router for route organization\n- Implement middleware for cross-cutting concerns\n- Use error handling middleware\n- Implement request validation\n- Use proper HTTP methods and status codes\n\n## Best Practices\n- Environment-based configuration\n- Proper error handling and logging\n- Input validation and sanitization\n- Implement rate limiting\n- Use helmet for security headers\n- Implement CORS properly\n\n## Project Structure\n```\nsrc/\n  controllers/\n  middlewares/\n  routes/\n  services/\n  models/\n  utils/\n  types/\n  config/\n  app.ts\n  server.ts\n```\n\n## Security\n- Validate all inputs\n- Sanitize user data\n- Use parameterized queries\n- Implement proper authentication\n- Never expose sensitive data\n\n## Testing\n- Use Jest for unit tests\n- Use Supertest for integration tests\n- Mock external dependencies\n- Test error scenarios"
+    },
+    {
+      "path": "src/middlewares/errorHandler.ts",
+      "content": "import { Request, Response, NextFunction } from 'express'\n\ninterface AppError extends Error {\n  statusCode?: number\n  isOperational?: boolean\n}\n\nexport const errorHandler = (\n  err: AppError,\n  req: Request,\n  res: Response,\n  next: NextFunction\n): void => {\n  const statusCode = err.statusCode || 500\n  const message = err.message || 'Internal Server Error'\n\n  // Log error\n  console.error(`Error ${statusCode}: ${message}`, {\n    url: req.url,\n    method: req.method,\n    stack: err.stack\n  })\n\n  res.status(statusCode).json({\n    success: false,\n    error: {\n      message,\n      ...(process.env.NODE_ENV === 'development' && { stack: err.stack })\n    }\n  })\n}"
+    }
+  ],
+  "commands": {
+    "install": "npm init -y && npm install express cors helmet morgan dotenv && npm install -D typescript @types/express @types/node nodemon ts-node",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "jest"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "nuxt3-fullstack",
+  "description": "Nuxt 3 with TypeScript, Nitro server, and full-stack Vue development",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["nuxt", "vue", "typescript", "fullstack", "ssr", "nitro"],
+  "rules": {
+    "context": "You are an expert Nuxt 3 developer specializing in full-stack Vue applications with server-side rendering and Nitro backend.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Nuxt 3",
+      "conventions": [
+        "Use Composition API with script setup",
+        "Follow Nuxt 3 conventions",
+        "Use auto-imports effectively",
+        "Implement server API routes",
+        "Use TypeScript throughout",
+        "Follow Vue 3 best practices"
+      ]
+    },
+    "restrictions": [
+      "Avoid Options API",
+      "Don't ignore Nuxt conventions",
+      "Avoid client-only solutions when SSR works",
+      "Don't bypass Nuxt's data fetching",
+      "Avoid manual imports for auto-imported utilities"
+    ],
+    "preferences": [
+      "Use useFetch and useAsyncData",
+      "Implement server API routes with Nitro",
+      "Use Nuxt composables",
+      "Leverage auto-imports",
+      "Use layouts effectively",
+      "Implement proper error handling",
+      "Use Pinia for complex state management"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Nuxt 3 Development Rules\n\nYou are an expert Nuxt 3 developer specializing in:\n- Nuxt 3 with Vue 3 Composition API\n- TypeScript for full-stack type safety\n- Nitro server engine\n- Server-side rendering and static generation\n- Auto-imports and file-based routing\n\n## Project Structure\n```\napp.vue\ncomponents/\n  AppHeader.vue\ncomposables/\n  useAuth.ts\nlayouts/\n  default.vue\nmiddleware/\n  auth.ts\npages/\n  index.vue\n  users/\n    [id].vue\nplugins/\n  api.ts\nserver/\n  api/\n    users.get.ts\n    users.post.ts\n  middleware/\n    cors.ts\nstores/\n  user.ts\n```\n\n## Data Fetching\n```vue\n<script setup lang=\"ts\">\n// Use useFetch for server-side data fetching\nconst { data, pending, error } = await useFetch('/api/users')\n\n// Use useAsyncData for custom async logic\nconst { data: posts } = await useAsyncData('posts', \n  () => $fetch('/api/posts')\n)\n\n// Use useLazyFetch for client-side fetching\nconst { data: comments } = useLazyFetch('/api/comments')\n</script>\n```\n\n## Server API Routes\n```typescript\n// server/api/users.get.ts\nexport default defineEventHandler(async (event) => {\n  const query = getQuery(event)\n  const users = await getUsersFromDB()\n  return users\n})\n\n// server/api/users.post.ts\nexport default defineEventHandler(async (event) => {\n  const body = await readBody(event)\n  const user = await createUser(body)\n  return user\n})\n```\n\n## Composables\n```typescript\n// composables/useAuth.ts\nexport const useAuth = () => {\n  const user = useState('auth.user', () => null)\n  \n  const login = async (credentials) => {\n    const { data } = await $fetch('/api/auth/login', {\n      method: 'POST',\n      body: credentials\n    })\n    user.value = data\n  }\n  \n  return { user: readonly(user), login }\n}\n```\n\n## Auto-imports\n- Components in components/ are auto-imported\n- Composables in composables/ are auto-imported\n- Utils in utils/ are auto-imported\n- Vue APIs are auto-imported\n\n## Middleware\n```typescript\n// middleware/auth.ts\nexport default defineNuxtRouteMiddleware((to, from) => {\n  const { user } = useAuth()\n  \n  if (!user.value) {\n    return navigateTo('/login')\n  }\n})\n```\n\n## Best Practices\n- Use TypeScript for type safety\n- Leverage SSR for better SEO\n- Use Nitro for API routes\n- Implement proper error pages\n- Use layouts for common UI\n- Handle loading states\n- Optimize with lazy components\n\n## Performance\n- Use NuxtImage for images\n- Implement proper caching\n- Use payload extraction\n- Optimize bundle size\n- Use lazy hydration"
+    }
+  ],
+  "commands": {
+    "install": "npx nuxi@latest init . --typescript",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "generate": "npm run generate"
+  }
+}

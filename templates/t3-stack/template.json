@@ -1,0 +1,58 @@
+{
+  "name": "t3-stack-full",
+  "description": "T3 Stack with Next.js, TypeScript, Tailwind, tRPC, Prisma, and NextAuth",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["t3", "nextjs", "typescript", "trpc", "prisma", "tailwind", "nextauth", "fullstack"],
+  "rules": {
+    "context": "You are an expert T3 Stack developer specializing in type-safe full-stack applications with Next.js, tRPC, Prisma, and NextAuth.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "T3 Stack (Next.js, tRPC, Prisma)",
+      "conventions": [
+        "Use TypeScript for end-to-end type safety",
+        "Follow T3 Stack best practices",
+        "Use tRPC for type-safe APIs",
+        "Use Prisma for database operations",
+        "Implement NextAuth for authentication",
+        "Use Tailwind for styling"
+      ]
+    },
+    "restrictions": [
+      "Avoid breaking type safety",
+      "Don't use any type",
+      "Avoid REST APIs when tRPC works",
+      "Don't expose sensitive data in tRPC procedures",
+      "Avoid client-side database queries"
+    ],
+    "preferences": [
+      "Leverage tRPC's type inference",
+      "Use Zod for input validation",
+      "Implement proper error handling in procedures",
+      "Use React Query features via tRPC",
+      "Implement optimistic updates",
+      "Use middleware for auth checks",
+      "Follow database best practices with Prisma",
+      "Implement proper session management"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# T3 Stack Development Rules\n\nYou are an expert T3 Stack developer specializing in:\n- Next.js 14+ with App Router\n- tRPC for type-safe APIs\n- Prisma for database management\n- NextAuth.js for authentication\n- Tailwind CSS for styling\n- End-to-end type safety with TypeScript\n\n## Architecture\n```\nsrc/\n  app/\n    api/\n      trpc/[trpc]/route.ts\n      auth/[...nextauth]/route.ts\n  server/\n    api/\n      routers/\n      root.ts\n      trpc.ts\n    auth.ts\n    db.ts\n  trpc/\n    react.tsx\n    server.ts\n    shared.ts\n```\n\n## tRPC Patterns\n```typescript\n// Router definition\nexport const postRouter = createTRPCRouter({\n  create: protectedProcedure\n    .input(z.object({\n      title: z.string().min(1),\n      content: z.string(),\n    }))\n    .mutation(async ({ ctx, input }) => {\n      return ctx.db.post.create({\n        data: {\n          ...input,\n          authorId: ctx.session.user.id,\n        },\n      })\n    }),\n    \n  getAll: publicProcedure\n    .query(({ ctx }) => {\n      return ctx.db.post.findMany({\n        include: { author: true },\n      })\n    }),\n})\n```\n\n## Client Usage\n```typescript\n// Using tRPC in components\nconst { data, isLoading } = api.post.getAll.useQuery()\nconst createPost = api.post.create.useMutation({\n  onSuccess: () => {\n    void ctx.post.getAll.invalidate()\n  },\n})\n```\n\n## Prisma Schema\n```prisma\nmodel Post {\n  id        String   @id @default(cuid())\n  title     String\n  content   String\n  authorId  String\n  author    User     @relation(fields: [authorId], references: [id])\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n```\n\n## Authentication\n- Use NextAuth.js with session strategy\n- Implement role-based access control\n- Secure procedures with middleware\n- Handle session in tRPC context\n\n## Type Safety\n- Let TypeScript infer types from Prisma\n- Use Zod for runtime validation\n- Leverage tRPC's automatic type inference\n- Avoid manual type definitions when possible\n\n## Best Practices\n- Use optimistic updates for better UX\n- Implement proper error boundaries\n- Handle loading and error states\n- Use Suspense with tRPC\n- Implement rate limiting\n- Use database transactions when needed\n\n## Performance\n- Use React Query features (caching, invalidation)\n- Implement infinite queries for lists\n- Use select to limit Prisma queries\n- Implement proper database indexes\n\n## Security\n- Always validate inputs with Zod\n- Use protected procedures for auth routes\n- Implement CSRF protection\n- Sanitize user inputs\n- Use environment variables for secrets"
+    },
+    {
+      "path": "src/server/api/routers/example.ts",
+      "content": "import { z } from 'zod'\nimport {\n  createTRPCRouter,\n  protectedProcedure,\n  publicProcedure,\n} from '~/server/api/trpc'\n\nexport const exampleRouter = createTRPCRouter({\n  hello: publicProcedure\n    .input(z.object({ text: z.string() }))\n    .query(({ input }) => {\n      return {\n        greeting: `Hello ${input.text}`,\n      }\n    }),\n\n  getAll: publicProcedure.query(({ ctx }) => {\n    return ctx.db.example.findMany()\n  }),\n\n  getSecretMessage: protectedProcedure.query(() => {\n    return 'You can now see this secret message!'\n  }),\n\n  create: protectedProcedure\n    .input(\n      z.object({\n        name: z.string().min(1),\n        description: z.string().optional(),\n      })\n    )\n    .mutation(async ({ ctx, input }) => {\n      return ctx.db.example.create({\n        data: {\n          ...input,\n          userId: ctx.session.user.id,\n        },\n      })\n    }),\n\n  update: protectedProcedure\n    .input(\n      z.object({\n        id: z.string(),\n        name: z.string().min(1).optional(),\n        description: z.string().optional(),\n      })\n    )\n    .mutation(async ({ ctx, input }) => {\n      const { id, ...data } = input\n      \n      return ctx.db.example.update({\n        where: { id },\n        data,\n      })\n    }),\n\n  delete: protectedProcedure\n    .input(z.object({ id: z.string() }))\n    .mutation(async ({ ctx, input }) => {\n      return ctx.db.example.delete({\n        where: { id: input.id },\n      })\n    }),\n})"
+    }
+  ],
+  "commands": {
+    "install": "npm create t3-app@latest . -- --noGit --tailwind --trpc --nextAuth --prisma --appRouter --noInstall",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "start": "npm start",
+    "db:push": "npm run db:push",
+    "db:studio": "npm run db:studio",
+    "test": "npm test"
+  }
+}

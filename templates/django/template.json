@@ -1,0 +1,52 @@
+{
+  "name": "django-rest-api",
+  "description": "Django with Django REST Framework, PostgreSQL, and modern Python patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["django", "python", "rest-api", "postgresql", "backend"],
+  "rules": {
+    "context": "You are an expert Django developer specializing in Django REST Framework, PostgreSQL, and modern Python web development.",
+    "style": {
+      "language": "Python 3.11+",
+      "framework": "Django 4.2+ with DRF",
+      "conventions": [
+        "Follow Django best practices",
+        "Use Django REST Framework for APIs",
+        "Implement class-based views",
+        "Use Django ORM effectively",
+        "Follow PEP 8 style guide",
+        "Write comprehensive tests"
+      ]
+    },
+    "restrictions": [
+      "Avoid raw SQL unless necessary",
+      "Don't bypass Django's security features",
+      "Avoid circular imports",
+      "Don't use mutable default arguments",
+      "Avoid hardcoded secrets"
+    ],
+    "preferences": [
+      "Use Django's built-in features",
+      "Implement proper serializers",
+      "Use viewsets for CRUD operations",
+      "Implement proper authentication",
+      "Use Django signals sparingly",
+      "Write database migrations carefully",
+      "Use Django admin effectively"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Django REST Framework Development Rules\n\nYou are an expert Django developer specializing in:\n- Django 4.2+ with Django REST Framework\n- PostgreSQL database\n- Class-based views and viewsets\n- Django ORM and migrations\n- API design and authentication\n\n## Project Structure\n```\nproject/\n  apps/\n    app_name/\n      models.py\n      views.py\n      serializers.py\n      urls.py\n      admin.py\n      tests/\n  config/\n    settings/\n      base.py\n      development.py\n      production.py\n    urls.py\n    wsgi.py\n  requirements/\n    base.txt\n    development.txt\n    production.txt\n```\n\n## Models\n```python\nfrom django.db import models\nfrom django.contrib.auth import get_user_model\n\nUser = get_user_model()\n\nclass TimeStampedModel(models.Model):\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n    \n    class Meta:\n        abstract = True\n```\n\n## Serializers\n```python\nfrom rest_framework import serializers\n\nclass ExampleSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Example\n        fields = ['id', 'name', 'created_at']\n        read_only_fields = ['id', 'created_at']\n```\n\n## ViewSets\n```python\nfrom rest_framework import viewsets, permissions\n\nclass ExampleViewSet(viewsets.ModelViewSet):\n    queryset = Example.objects.all()\n    serializer_class = ExampleSerializer\n    permission_classes = [permissions.IsAuthenticated]\n    \n    def get_queryset(self):\n        return self.queryset.filter(user=self.request.user)\n```\n\n## Best Practices\n- Use select_related and prefetch_related\n- Implement proper pagination\n- Use Django's cache framework\n- Write comprehensive tests\n- Use Django Debug Toolbar in development\n- Implement proper logging\n- Use environment variables for settings\n\n## Security\n- Never disable CSRF protection\n- Use Django's authentication system\n- Implement proper permissions\n- Validate all inputs\n- Use Django's ORM to prevent SQL injection\n- Keep SECRET_KEY secure\n\n## Testing\n```python\nfrom django.test import TestCase\nfrom rest_framework.test import APITestCase\n\nclass ExampleAPITest(APITestCase):\n    def setUp(self):\n        self.user = User.objects.create_user(...)\n        self.client.force_authenticate(user=self.user)\n```"
+    }
+  ],
+  "commands": {
+    "install": "django-admin startproject config . && pip install djangorestframework django-cors-headers python-decouple",
+    "dev": "python manage.py runserver",
+    "migrate": "python manage.py migrate",
+    "makemigrations": "python manage.py makemigrations",
+    "test": "python manage.py test",
+    "shell": "python manage.py shell"
+  }
+}

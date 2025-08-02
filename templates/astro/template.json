@@ -1,0 +1,51 @@
+{
+  "name": "astro-content",
+  "description": "Astro static site generator with TypeScript, MDX, and modern web optimization",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["astro", "static-site", "typescript", "mdx", "jamstack"],
+  "rules": {
+    "context": "You are an expert Astro developer specializing in static site generation, content-driven websites, and modern web performance.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Astro 4.0+",
+      "conventions": [
+        "Use Astro components for static content",
+        "Implement partial hydration",
+        "Follow Astro best practices",
+        "Use TypeScript for type safety",
+        "Optimize for Core Web Vitals",
+        "Use content collections"
+      ]
+    },
+    "restrictions": [
+      "Avoid unnecessary client-side JavaScript",
+      "Don't over-hydrate components",
+      "Avoid runtime API calls in static pages",
+      "Don't ignore build performance",
+      "Avoid large JavaScript bundles"
+    ],
+    "preferences": [
+      "Use Astro Islands architecture",
+      "Implement proper SEO with meta tags",
+      "Use Image component for optimization",
+      "Leverage static generation",
+      "Use MDX for content",
+      "Implement proper 404 pages",
+      "Use ViewTransitions for SPA-like navigation"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Astro Development Rules\n\nYou are an expert Astro developer specializing in:\n- Astro 4.0+ with TypeScript\n- Static site generation\n- Partial hydration and Islands architecture\n- Content collections and MDX\n- Web performance optimization\n\n## Project Structure\n```\nsrc/\n  components/\n    Card.astro\n    Button.tsx\n  layouts/\n    Layout.astro\n  pages/\n    index.astro\n    blog/\n      [...slug].astro\n  content/\n    blog/\n      post-1.mdx\n    config.ts\n  styles/\n    global.css\n```\n\n## Astro Components\n```astro\n---\ninterface Props {\n  title: string;\n  description?: string;\n}\n\nconst { title, description } = Astro.props;\n---\n\n<article>\n  <h2>{title}</h2>\n  {description && <p>{description}</p>}\n</article>\n\n<style>\n  article {\n    padding: 1rem;\n  }\n</style>\n```\n\n## Partial Hydration\n```astro\n---\nimport InteractiveComponent from './Interactive.tsx';\n---\n\n<!-- Only loads JS when visible -->\n<InteractiveComponent client:visible />\n\n<!-- Loads JS on idle -->\n<InteractiveComponent client:idle />\n\n<!-- No JS sent to client -->\n<StaticComponent />\n```\n\n## Content Collections\n```typescript\n// src/content/config.ts\nimport { defineCollection, z } from 'astro:content';\n\nconst blog = defineCollection({\n  type: 'content',\n  schema: z.object({\n    title: z.string(),\n    date: z.date(),\n    tags: z.array(z.string()),\n  }),\n});\n\nexport const collections = { blog };\n```\n\n## Data Fetching\n```astro\n---\n// Runs at build time\nconst response = await fetch('https://api.example.com/data');\nconst data = await response.json();\n---\n```\n\n## SEO & Meta Tags\n```astro\n---\nimport Layout from '../layouts/Layout.astro';\n---\n\n<Layout \n  title=\"Page Title\"\n  description=\"Page description\"\n  image=\"/og-image.png\"\n>\n  <!-- Content -->\n</Layout>\n```\n\n## Performance\n- Use Image component for optimization\n- Implement lazy loading\n- Minimize client-side JavaScript\n- Use static generation when possible\n- Optimize fonts with font-display\n\n## Best Practices\n- Use ViewTransitions for navigation\n- Implement proper 404 and error pages\n- Use environment variables\n- Optimize build output\n- Implement sitemap generation\n- Use RSS feed for blogs"
+    }
+  ],
+  "commands": {
+    "install": "npm create astro@latest . -- --template minimal --typescript",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "check": "astro check"
+  }
+}

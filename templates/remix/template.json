@@ -1,0 +1,51 @@
+{
+  "name": "remix-typescript",
+  "description": "Remix full-stack framework with TypeScript, Tailwind, and modern web patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["remix", "react", "typescript", "fullstack", "ssr"],
+  "rules": {
+    "context": "You are an expert Remix developer specializing in full-stack React applications with server-side rendering and modern web standards.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Remix",
+      "conventions": [
+        "Use TypeScript for type safety",
+        "Follow Remix conventions",
+        "Use loaders for data fetching",
+        "Use actions for mutations",
+        "Implement progressive enhancement",
+        "Use Tailwind for styling"
+      ]
+    },
+    "restrictions": [
+      "Avoid client-side only solutions",
+      "Don't bypass Remix data flow",
+      "Avoid unnecessary JavaScript",
+      "Don't ignore web standards",
+      "Avoid large client bundles"
+    ],
+    "preferences": [
+      "Use web platform APIs",
+      "Implement forms that work without JS",
+      "Use cookies for session management",
+      "Leverage HTTP caching",
+      "Use nested routing effectively",
+      "Implement proper error boundaries",
+      "Use resource routes for APIs"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Remix TypeScript Development Rules\n\nYou are an expert Remix developer specializing in:\n- Remix with TypeScript\n- Server-side rendering\n- Progressive enhancement\n- Web standards and platform APIs\n- Full-stack React applications\n\n## Core Concepts\n- Loaders for data fetching\n- Actions for mutations\n- Nested routing\n- Progressive enhancement\n- Error boundaries\n- Form handling\n\n## Route Module Structure\n```typescript\nimport type { LoaderFunctionArgs, ActionFunctionArgs } from \"@remix-run/node\";\nimport { json } from \"@remix-run/node\";\nimport { useLoaderData, Form } from \"@remix-run/react\";\n\nexport async function loader({ request, params }: LoaderFunctionArgs) {\n  // Fetch data\n  return json({ data: \"value\" });\n}\n\nexport async function action({ request }: ActionFunctionArgs) {\n  const formData = await request.formData();\n  // Process form\n  return json({ success: true });\n}\n\nexport default function Route() {\n  const { data } = useLoaderData<typeof loader>();\n  \n  return (\n    <Form method=\"post\">\n      {/* Component JSX */}\n    </Form>\n  );\n}\n```\n\n## Data Loading Patterns\n- Use loaders for GET requests\n- Return Response objects or use json helper\n- Handle errors with throw responses\n- Use defer for streaming\n\n## Form Handling\n```typescript\n<Form method=\"post\">\n  <input name=\"email\" type=\"email\" required />\n  <button type=\"submit\">Submit</button>\n</Form>\n```\n\n## Session Management\n```typescript\nimport { createCookieSessionStorage } from \"@remix-run/node\";\n\nexport const sessionStorage = createCookieSessionStorage({\n  cookie: {\n    name: \"_session\",\n    secrets: [process.env.SESSION_SECRET],\n    secure: true,\n    httpOnly: true,\n  },\n});\n```\n\n## Best Practices\n- Forms work without JavaScript\n- Use proper HTTP status codes\n- Leverage browser caching\n- Implement optimistic UI\n- Use prefetching wisely\n- Handle race conditions\n\n## Performance\n- Minimize JavaScript bundles\n- Use HTTP caching headers\n- Implement streaming SSR\n- Lazy load routes\n- Optimize images\n\n## Testing\n- Test loaders and actions\n- Use MSW for API mocking\n- Test progressive enhancement\n- Verify accessibility"
+    }
+  ],
+  "commands": {
+    "install": "npx create-remix@latest . --typescript --install",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "start": "npm start",
+    "test": "npm test"
+  }
+}

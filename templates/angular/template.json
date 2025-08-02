@@ -1,0 +1,52 @@
+{
+  "name": "angular-enterprise",
+  "description": "Angular 17+ with TypeScript, RxJS, NgRx, and enterprise patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["angular", "typescript", "rxjs", "ngrx", "enterprise"],
+  "rules": {
+    "context": "You are an expert Angular developer specializing in enterprise applications with TypeScript, RxJS, and state management.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Angular 17+",
+      "conventions": [
+        "Use standalone components",
+        "Follow Angular style guide",
+        "Use RxJS for async operations",
+        "Implement OnPush change detection",
+        "Use signals for state management",
+        "Follow SOLID principles"
+      ]
+    },
+    "restrictions": [
+      "Avoid any type",
+      "Don't subscribe in components without unsubscribing",
+      "Avoid deep component nesting",
+      "Don't mutate state directly",
+      "Avoid circular dependencies"
+    ],
+    "preferences": [
+      "Use Angular signals",
+      "Implement smart/dumb component pattern",
+      "Use async pipe in templates",
+      "Leverage Angular CDK",
+      "Use reactive forms",
+      "Implement proper error handling",
+      "Use interceptors for HTTP"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Angular Enterprise Development Rules\n\nYou are an expert Angular developer specializing in:\n- Angular 17+ with standalone components\n- TypeScript and strict mode\n- RxJS and reactive patterns\n- Angular signals for state\n- Enterprise architecture patterns\n\n## Project Structure\n```\nsrc/\n  app/\n    core/\n      services/\n      guards/\n      interceptors/\n    shared/\n      components/\n      directives/\n      pipes/\n    features/\n      feature-name/\n        components/\n        services/\n        models/\n    app.component.ts\n    app.config.ts\n    app.routes.ts\n```\n\n## Standalone Components\n```typescript\nimport { Component, signal, computed } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div>{{ title() }}</div>\n    <div>{{ computedValue() }}</div>\n  `,\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ExampleComponent {\n  title = signal('Hello');\n  computedValue = computed(() => this.title() + ' World');\n}\n```\n\n## Services with Signals\n```typescript\n@Injectable({ providedIn: 'root' })\nexport class StateService {\n  private state = signal<State>(initialState);\n  \n  readonly data = computed(() => this.state().data);\n  readonly loading = computed(() => this.state().loading);\n  \n  updateData(data: Data): void {\n    this.state.update(state => ({ ...state, data }));\n  }\n}\n```\n\n## RxJS Patterns\n```typescript\ndata$ = this.http.get<Data[]>('/api/data').pipe(\n  map(data => data.filter(item => item.active)),\n  catchError(error => {\n    console.error(error);\n    return of([]);\n  }),\n  shareReplay(1)\n);\n```\n\n## Reactive Forms\n```typescript\nform = this.fb.group({\n  email: ['', [Validators.required, Validators.email]],\n  password: ['', [Validators.required, Validators.minLength(8)]]\n});\n\nsubmit(): void {\n  if (this.form.valid) {\n    const value = this.form.getRawValue();\n    // Process form\n  }\n}\n```\n\n## HTTP Interceptor\n```typescript\nexport const authInterceptor: HttpInterceptorFn = (req, next) => {\n  const token = inject(AuthService).token();\n  \n  if (token) {\n    req = req.clone({\n      setHeaders: { Authorization: `Bearer ${token}` }\n    });\n  }\n  \n  return next(req);\n};\n```\n\n## Best Practices\n- Use OnPush change detection\n- Unsubscribe from observables\n- Use trackBy for ngFor\n- Implement lazy loading\n- Use Angular CDK utilities\n- Write unit tests with Jasmine/Karma\n- Use strict TypeScript settings\n\n## Performance\n- Use OnPush strategy\n- Implement virtual scrolling\n- Lazy load feature modules\n- Use pure pipes\n- Optimize bundle size"
+    }
+  ],
+  "commands": {
+    "install": "ng new . --routing --style=scss --strict",
+    "dev": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  }
+}

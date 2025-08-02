@@ -1,0 +1,56 @@
+{
+  "name": "sveltekit-typescript",
+  "description": "SvelteKit with TypeScript, Tailwind CSS, and modern web app patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["svelte", "sveltekit", "typescript", "tailwind", "ssr", "spa"],
+  "rules": {
+    "context": "You are an expert Svelte developer specializing in SvelteKit, TypeScript, and modern web application patterns.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "SvelteKit",
+      "conventions": [
+        "Use TypeScript for type safety",
+        "Follow SvelteKit file-based routing",
+        "Use Svelte stores for state management",
+        "Implement server-side rendering by default",
+        "Use +page.ts and +layout.ts for data loading",
+        "Follow Svelte component conventions"
+      ]
+    },
+    "restrictions": [
+      "Avoid client-side only rendering without reason",
+      "Don't use global variables for state",
+      "Avoid any type in TypeScript",
+      "Don't ignore accessibility",
+      "Avoid blocking data fetching"
+    ],
+    "preferences": [
+      "Use load functions for data fetching",
+      "Implement proper error boundaries with +error.svelte",
+      "Use form actions for mutations",
+      "Implement progressive enhancement",
+      "Use $ syntax for reactive statements",
+      "Leverage Svelte transitions and animations",
+      "Use typed endpoints",
+      "Implement proper SEO with meta tags"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# SvelteKit TypeScript Development Rules\n\nYou are an expert SvelteKit developer specializing in:\n- SvelteKit with TypeScript\n- Server-side rendering and static generation\n- Form actions and progressive enhancement\n- Svelte stores and reactivity\n- Modern web performance patterns\n\n## Code Style\n- Use TypeScript for all files\n- Follow SvelteKit conventions\n- Use $ for reactive declarations\n- Implement proper component composition\n\n## File Structure\n```\nsrc/\n  routes/\n    +page.svelte\n    +page.ts\n    +layout.svelte\n    +layout.ts\n    +error.svelte\n    api/\n      +server.ts\n  lib/\n    components/\n    stores/\n    utils/\n  app.html\n  app.d.ts\n```\n\n## Data Loading\n```typescript\n// +page.ts\nimport type { PageLoad } from './$types'\n\nexport const load: PageLoad = async ({ params, fetch }) => {\n  const response = await fetch(`/api/data/${params.id}`)\n  const data = await response.json()\n  \n  return {\n    item: data\n  }\n}\n```\n\n## Reactive Patterns\n```svelte\n<script lang=\"ts\">\n  let count = 0\n  $: doubled = count * 2\n  $: {\n    console.log(`Count is ${count}`)\n  }\n</script>\n```\n\n## Form Actions\n```typescript\n// +page.server.ts\nimport type { Actions } from './$types'\n\nexport const actions: Actions = {\n  default: async ({ request }) => {\n    const formData = await request.formData()\n    // Process form\n    return { success: true }\n  }\n}\n```\n\n## State Management\n- Use Svelte stores for global state\n- Leverage context API for component trees\n- Use derived stores for computed values\n- Implement custom stores when needed\n\n## Best Practices\n- Implement SSR by default\n- Use progressive enhancement\n- Handle loading and error states\n- Implement proper form validation\n- Use appropriate rendering modes\n- Optimize for Core Web Vitals\n\n## Performance\n- Use preloading for navigation\n- Implement code splitting\n- Optimize images with @sveltejs/enhanced-img\n- Use streaming SSR when beneficial\n\n## Avoid\n- Client-side only apps without reason\n- Blocking waterfalls in load functions\n- Large client-side bundles\n- Ignoring progressive enhancement"
+    },
+    {
+      "path": "src/lib/stores/counter.ts",
+      "content": "import { writable, derived } from 'svelte/store'\n\nfunction createCounter(initialValue = 0) {\n  const { subscribe, set, update } = writable(initialValue)\n\n  return {\n    subscribe,\n    increment: () => update(n => n + 1),\n    decrement: () => update(n => n - 1),\n    reset: () => set(initialValue),\n    set\n  }\n}\n\nexport const counter = createCounter()\n\nexport const doubled = derived(\n  counter,\n  $counter => $counter * 2\n)\n\nexport const quadrupled = derived(\n  doubled,\n  $doubled => $doubled * 2\n)"
+    }
+  ],
+  "commands": {
+    "install": "npm create svelte@latest . -- --template skeleton --types typescript --prettier --eslint",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "test": "npm run test"
+  }
+}

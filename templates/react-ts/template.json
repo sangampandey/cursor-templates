@@ -1,0 +1,51 @@
+{
+  "name": "react-typescript-vite",
+  "description": "React with TypeScript, Vite, and modern tooling",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["react", "typescript", "vite", "spa"],
+  "rules": {
+    "context": "You are an expert React developer working with TypeScript, modern hooks, and component patterns.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "React 18+",
+      "conventions": [
+        "Use functional components with TypeScript",
+        "Implement custom hooks for logic reuse",
+        "Use React.FC sparingly, prefer explicit return types",
+        "Follow React naming conventions (PascalCase for components)",
+        "Use modern CSS-in-JS or CSS modules"
+      ]
+    },
+    "restrictions": [
+      "Avoid class components",
+      "Don't use deprecated lifecycle methods",
+      "Avoid any type, use proper TypeScript types",
+      "Don't mutate state directly"
+    ],
+    "preferences": [
+      "Use custom hooks for complex logic",
+      "Implement proper error boundaries",
+      "Use React.memo for optimization when needed",
+      "Prefer composition over inheritance",
+      "Use Suspense for code splitting",
+      "Implement proper TypeScript generics"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# React TypeScript Development Rules\n\nYou are an expert React developer specializing in:\n- React 18+ with TypeScript\n- Modern React hooks and patterns\n- Component composition\n- State management best practices\n- Performance optimization\n\n## Code Style\n- Use functional components exclusively\n- Implement TypeScript for type safety\n- Follow React naming conventions\n- Use custom hooks for reusable logic\n\n## TypeScript\n- Define interfaces for props\n- Use generics for reusable components\n- Avoid 'any' type\n- Implement proper type inference\n\n## Best Practices\n- Implement error boundaries\n- Use React.memo for expensive components\n- Lazy load routes and components\n- Use proper keys in lists\n- Implement proper form handling\n- Use context API judiciously\n\n## Hooks Guidelines\n- Custom hooks start with 'use'\n- Follow rules of hooks\n- Separate concerns in different hooks\n- Use useCallback and useMemo appropriately\n\n## File Structure\n```\nsrc/\n  components/\n    common/\n    features/\n  hooks/\n  services/\n  types/\n  utils/\n  App.tsx\n  main.tsx\n```"
+    },
+    {
+      "path": "src/hooks/useExample.ts",
+      "content": "import { useState, useEffect } from 'react'\n\ninterface UseExampleReturn {\n  data: string | null\n  loading: boolean\n  error: Error | null\n}\n\nexport function useExample(initialValue?: string): UseExampleReturn {\n  const [data, setData] = useState<string | null>(initialValue ?? null)\n  const [loading, setLoading] = useState(false)\n  const [error, setError] = useState<Error | null>(null)\n\n  useEffect(() => {\n    // Example effect logic\n  }, [])\n\n  return { data, loading, error }\n}"
+    }
+  ],
+  "commands": {
+    "install": "npm create vite@latest . -- --template react-ts",
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "test": "npm test"
+  }
+}

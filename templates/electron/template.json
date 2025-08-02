@@ -1,0 +1,51 @@
+{
+  "name": "electron-react-typescript",
+  "description": "Electron desktop app with React, TypeScript, and modern desktop patterns",
+  "version": "1.0.0",
+  "author": "Cursor Templates",
+  "tags": ["electron", "react", "typescript", "desktop", "cross-platform"],
+  "rules": {
+    "context": "You are an expert Electron developer specializing in cross-platform desktop applications with React and TypeScript.",
+    "style": {
+      "language": "TypeScript",
+      "framework": "Electron with React",
+      "conventions": [
+        "Follow Electron security best practices",
+        "Use IPC for process communication",
+        "Implement context isolation",
+        "Use TypeScript for type safety",
+        "Follow React best practices",
+        "Handle platform differences"
+      ]
+    },
+    "restrictions": [
+      "Never disable context isolation",
+      "Avoid node integration in renderer",
+      "Don't expose sensitive APIs",
+      "Avoid synchronous IPC",
+      "Don't ignore security warnings"
+    ],
+    "preferences": [
+      "Use preload scripts for IPC",
+      "Implement proper window management",
+      "Use electron-builder for packaging",
+      "Handle auto-updates properly",
+      "Implement proper file handling",
+      "Use native menus and dialogs",
+      "Handle deep linking"
+    ]
+  },
+  "files": [
+    {
+      "path": ".cursorrules",
+      "content": "# Electron with React TypeScript Development Rules\n\nYou are an expert Electron developer specializing in:\n- Electron with React and TypeScript\n- Cross-platform desktop applications\n- IPC communication patterns\n- Electron security best practices\n- Native OS integration\n\n## Project Structure\n```\nsrc/\n  main/\n    index.ts        # Main process\n    preload.ts      # Preload script\n    ipc.ts          # IPC handlers\n  renderer/\n    App.tsx         # React app\n    components/\n  shared/\n    types.ts        # Shared types\n    constants.ts\n```\n\n## Main Process\n```typescript\n// main/index.ts\nimport { app, BrowserWindow, ipcMain } from 'electron';\nimport path from 'path';\n\nlet mainWindow: BrowserWindow | null;\n\nfunction createWindow() {\n  mainWindow = new BrowserWindow({\n    width: 1200,\n    height: 800,\n    webPreferences: {\n      contextIsolation: true,\n      nodeIntegration: false,\n      preload: path.join(__dirname, 'preload.js')\n    }\n  });\n  \n  if (process.env.NODE_ENV === 'development') {\n    mainWindow.loadURL('http://localhost:3000');\n  } else {\n    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));\n  }\n}\n\napp.whenReady().then(createWindow);\n```\n\n## Preload Script\n```typescript\n// main/preload.ts\nimport { contextBridge, ipcRenderer } from 'electron';\n\ncontextBridge.exposeInMainWorld('electronAPI', {\n  sendMessage: (channel: string, data: any) => {\n    const validChannels = ['toMain'];\n    if (validChannels.includes(channel)) {\n      ipcRenderer.send(channel, data);\n    }\n  },\n  onMessage: (channel: string, func: Function) => {\n    const validChannels = ['fromMain'];\n    if (validChannels.includes(channel)) {\n      ipcRenderer.on(channel, (event, ...args) => func(...args));\n    }\n  }\n});\n```\n\n## IPC Communication\n```typescript\n// Main process\nipcMain.handle('dialog:openFile', async () => {\n  const { canceled, filePaths } = await dialog.showOpenDialog({});\n  if (!canceled) {\n    return filePaths[0];\n  }\n});\n\n// Renderer process\nconst filePath = await window.electronAPI.invoke('dialog:openFile');\n```\n\n## Security Best Practices\n- Enable context isolation\n- Disable node integration\n- Validate IPC inputs\n- Use Content Security Policy\n- Sanitize external content\n- Implement secure auto-updates\n\n## Window Management\n```typescript\nconst windows = new Map<string, BrowserWindow>();\n\nfunction createWindow(id: string, options: BrowserWindowOptions) {\n  const window = new BrowserWindow(options);\n  windows.set(id, window);\n  \n  window.on('closed', () => {\n    windows.delete(id);\n  });\n  \n  return window;\n}\n```\n\n## Native Features\n- System tray integration\n- Native notifications\n- File associations\n- Protocol handling\n- Global shortcuts\n- Native menus\n\n## Build & Distribution\n```json\n// electron-builder config\n{\n  \"appId\": \"com.example.app\",\n  \"productName\": \"MyApp\",\n  \"directories\": {\n    \"output\": \"dist\"\n  },\n  \"mac\": {\n    \"category\": \"public.app-category.productivity\"\n  },\n  \"win\": {\n    \"target\": \"nsis\"\n  },\n  \"linux\": {\n    \"target\": \"AppImage\"\n  }\n}\n```"
+    }
+  ],
+  "commands": {
+    "install": "npm init electron-app@latest . -- --template=webpack-typescript",
+    "dev": "npm start",
+    "build": "npm run make",
+    "package": "npm run package",
+    "test": "npm test"
+  }
+}
