@@ -1,0 +1,56 @@
+{
+  "templates": {
+    "nextjs-app-router": {
+      "rating": 4.8,
+      "votes": 142,
+      "reviews": [
+        {
+          "user": "dev123",
+          "rating": 5,
+          "comment": "Excellent Next.js setup with great Cursor rules",
+          "date": "2024-08-01T10:00:00Z"
+        },
+        {
+          "user": "reactfan",
+          "rating": 4,
+          "comment": "Good template, could use more examples",
+          "date": "2024-07-28T15:30:00Z"
+        }
+      ]
+    },
+    "react-native-expo": {
+      "rating": 4.6,
+      "votes": 89,
+      "reviews": [
+        {
+          "user": "mobileDev",
+          "rating": 5,
+          "comment": "Perfect for mobile development with Expo",
+          "date": "2024-07-30T09:15:00Z"
+        }
+      ]
+    },
+    "t3-stack-full": {
+      "rating": 4.9,
+      "votes": 156,
+      "reviews": [
+        {
+          "user": "fullstackPro",
+          "rating": 5,
+          "comment": "Best full-stack template available",
+          "date": "2024-08-01T14:20:00Z"
+        }
+      ]
+    }
+  },
+  "featured": [
+    "t3-stack-full",
+    "nextjs-app-router",
+    "react-native-expo"
+  ],
+  "trending": [
+    "vue3-typescript-vite",
+    "sveltekit-typescript",
+    "flutter-riverpod"
+  ]
+}

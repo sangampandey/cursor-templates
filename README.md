@@ -207,16 +207,16 @@ cursor-templates import https://github.com/user/template-repo
 4. **Use semantic versioning**: Follow semver for template versions
 5. **Test thoroughly**: Validate templates before sharing
 
-## Comparison with Claude Code Templates
+## Key Features
 
-| Feature | Cursor Templates | Claude Code Templates |
-|---------|-----------------|----------------------|
-| Framework Templates | ✅ | ✅ |
-| AI Rules Configuration | ✅ (.cursorrules) | ✅ (CLAUDE.md) |
-| CLI Tool | ✅ | ✅ |
-| Template Discovery | ✅ | ✅ |
-| GitHub Import | ✅ | ✅ |
-| Custom Templates | ✅ | ✅ |
+| Feature | Status | Description |
+|---------|--------|-------------|
+| Framework Templates | ✅ | 15+ modern framework templates |
+| AI Rules Configuration | ✅ | Optimized `.cursorrules` for each template |
+| CLI Tool | ✅ | Powerful command-line interface |
+| Template Discovery | ✅ | Search and browse templates |
+| GitHub Import | ✅ | Import templates from repositories |
+| Custom Templates | ✅ | Create your own templates |
 
 ## License
 

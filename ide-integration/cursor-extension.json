@@ -1,0 +1,82 @@
+{
+  "name": "cursor-templates-extension",
+  "displayName": "Cursor Templates",
+  "description": "Quick access to Cursor Templates directly from the IDE",
+  "version": "1.0.0",
+  "publisher": "cursor-templates",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cursor-templates"
+  },
+  "categories": ["Other"],
+  "keywords": ["cursor", "templates", "ai", "boilerplate"],
+  "activationEvents": [
+    "onCommand:cursorTemplates.init",
+    "onCommand:cursorTemplates.list",
+    "onCommand:cursorTemplates.update"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursorTemplates.init",
+        "title": "Initialize Template",
+        "category": "Cursor Templates"
+      },
+      {
+        "command": "cursorTemplates.list",
+        "title": "List Templates",
+        "category": "Cursor Templates"
+      },
+      {
+        "command": "cursorTemplates.update",
+        "title": "Update Template",
+        "category": "Cursor Templates"
+      },
+      {
+        "command": "cursorTemplates.openDocs",
+        "title": "Open Documentation",
+        "category": "Cursor Templates"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "cursorTemplates.init",
+          "group": "navigation@1",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "cursorTemplates.init",
+          "title": "Cursor Templates: Initialize Template"
+        },
+        {
+          "command": "cursorTemplates.list",
+          "title": "Cursor Templates: List Templates"
+        },
+        {
+          "command": "cursorTemplates.update",
+          "title": "Cursor Templates: Update Template"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "cursorTemplates.init",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "!terminalFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.4.0"
+  }
+}
