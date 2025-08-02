@@ -5,32 +5,16 @@
   "github": {
     "silent": true
   },
-  "builds": [
+  "buildCommand": "",
+  "outputDirectory": "website",
+  "rewrites": [
     {
-      "src": "website/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/website/index.html"
+      "source": "/docs",
+      "destination": "/documentation.html"
     },
     {
-      "src": "/docs",
-      "dest": "/website/documentation.html"
-    },
-    {
-      "src": "/documentation",
-      "dest": "/website/documentation.html"
-    },
-    {
-      "src": "/website/(.*)",
-      "dest": "/website/$1"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
-      "dest": "/website/$1"
+      "source": "/documentation",
+      "destination": "/documentation.html"
     }
   ],
   "headers": [
@@ -48,11 +32,42 @@
         {
           "key": "X-XSS-Protection",
           "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     },
     {
-      "source": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(?:png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)",
       "headers": [
         {
           "key": "Cache-Control",
